@@ -1,0 +1,3 @@
+//farrukh malik
+
+var abc;
