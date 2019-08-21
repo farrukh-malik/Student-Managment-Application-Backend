@@ -56,5 +56,23 @@ module.exports = ()=>{
         }
     }); 
 
+// for delete all registration drop table ->delete
+
+    router.delete('/registration', async (req, res, next)=>{
+        try {
+            // const applicantId = req.params.applicantId;
+            // console.log("applicantId",applicantId)
+            await registrationService.deleteAllApplicantRegistration();
+            res.status(201).json({
+                message: 'ok'
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                err: error
+            });
+        }
+    }); 
+
     return router;
 }

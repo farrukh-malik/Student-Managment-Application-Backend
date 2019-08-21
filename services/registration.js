@@ -46,8 +46,23 @@ function deleteApplicantRegistration(applicantId){
     });
 }
 
+// for delete all registration drop table ->delete
+function deleteAllApplicantRegistration(){
+    return new Promise((resolve, reject)=>{
+        const query = `DROP TABLE ${tables.REGISTRATION}`;
+        connection.query(query, (err, result)=>{
+            if(err){
+                reject(err);
+            }
+            resolve(result);
+        });
+    });
+}
+
+
 module.exports = {
     createRegistration,
     getAllRegistration,
-    deleteApplicantRegistration
+    deleteApplicantRegistration,
+    deleteAllApplicantRegistration
 }
