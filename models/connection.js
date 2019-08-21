@@ -5,4 +5,4 @@ const connection = mysql.createConnection(
     databaseConnectionOption
 );
 
-module.exports = connection
+module.exports = connection;
