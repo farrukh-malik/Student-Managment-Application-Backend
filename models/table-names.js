@@ -1,9 +1,9 @@
-// const USER = 'user';
 const REGISTRATION = 'registration';
+const AUTHENTICATION = 'authentication';
 
 const tables = {
-    // USER
-    REGISTRATION
+    REGISTRATION,
+    AUTHENTICATION
 };
 
 module.exports = tables;

@@ -49,7 +49,7 @@ function deleteApplicantRegistration(applicantId){
 // for delete all registration drop table ->delete
 function deleteAllApplicantRegistration(){
     return new Promise((resolve, reject)=>{
-        const query = `DROP TABLE ${tables.REGISTRATION}`;
+        const query = `DELETE FROM ${tables.REGISTRATION}`;
         connection.query(query, (err, result)=>{
             if(err){
                 reject(err);

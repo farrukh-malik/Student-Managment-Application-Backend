@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api', registrationRouter);
 
-// app.use('/api', userRouter);
+app.use('/api', authenticationRouter);
 
 // app.use('/api', postRouter);
 

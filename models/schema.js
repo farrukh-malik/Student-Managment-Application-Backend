@@ -12,21 +12,19 @@ const CREATE_REGISTRATION_TABLE = `CREATE TABLE IF NOT EXISTS ${TABLES.REGISTRAT
                                 home_contact_number VARCHAR(20) NOT NULL,
                                 PRIMARY KEY (id)
                            )`;
-
-// const CREATE_USERS_TABLE = `CREATE TABLE IF NOT EXISTS ${TABLES.USER}
-//                            (
-//                                 id MEDIUMINT NOT NULL AUTO_INCREMENT,
-//                                 first_name VARCHAR(40) NOT NULL,
-//                                 last_name VARCHAR(40) NOT NULL,
-//                                 email VARCHAR(100) NOT NULL UNIQUE,
-//                                 password TEXT NOT NULL,
-//                                 PRIMARY KEY (id)
-//                            )`;
-
+const CREATE_AUTHENTICATION_TABLE = `CREATE TABLE IF NOT EXISTS ${TABLES.AUTHENTICATION}
+                           (
+                                id MEDIUMINT NOT NULL AUTO_INCREMENT,
+                                name VARCHAR(40) NOT NULL,
+                                email VARCHAR(100) NOT NULL UNIQUE,
+                                password VARCHAR(40) NOT NULL,
+                                position VARCHAR(40) NULL,
+                                PRIMARY KEY (id)
+                           )`;
 
 const schemas = {
-    CREATE_REGISTRATION_TABLE
-    // CREATE_USERS_TABLE
+    CREATE_REGISTRATION_TABLE,
+    CREATE_AUTHENTICATION_TABLE
 };
 
 module.exports = schemas;

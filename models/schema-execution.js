@@ -11,17 +11,16 @@ connection.connect(err => {
         if(err){
             throw err;
         }
-        console.log('Registraction Table Created');
+        console.log('Registration Table Created');
     });
 
-    // connection.query(schema.CREATE_USERS_TABLE, (err, result)=>{
-    //     if(err){
-    //         throw err;
-    //     }
-    //     console.log('User Table Created');
-    // });
-
-    
+    connection.query(schema.CREATE_AUTHENTICATION_TABLE, (err, result)=>{
+        if(err){
+            throw err;
+        }
+        console.log('Authentication Table Created');
+    });
+   
 
 });
 
