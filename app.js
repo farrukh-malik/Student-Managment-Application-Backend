@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const registrationRouter = require('./routes/registration')();
+const authenticationRouter = require('./routes/authentication')();
 
-// const userRouter = require('./routes/user')();
 // const postRouter = require('./routes/post')();
 // const commentRouter = require('./routes/comment')();
 const errorHandling = require('./utils/error-handling');
