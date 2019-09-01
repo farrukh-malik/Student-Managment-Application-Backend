@@ -5,7 +5,7 @@ module.exports = ()=>{
     const registrationService = require('../services/registration');
 
     // for insert registration ->Write
-    router.post('/registration', async (req, res, next)=>{
+    router.post('/registration', async (req: any, res: any, next: any)=>{
         try {
             console.log('registrationObject:', req.body)
             const registrationObject = req.body.registration;
@@ -24,7 +24,7 @@ module.exports = ()=>{
     });  
 
     // for get all registration ->Read
-    router.get('/registration', async(req, res)=>{
+    router.get('/registration', async(req: any, res: any)=>{
         try{
             // const authObj = req.body.auth;
            let result = await registrationService.getAllRegistration();
@@ -40,7 +40,7 @@ module.exports = ()=>{
      });
 
 // for delete single registration ->delete
-     router.delete('/registration/:applicantId', async (req, res, next)=>{
+     router.delete('/registration/:applicantId', async (req: any, res: any, next: any)=>{
         try {
             const applicantId = req.params.applicantId;
             console.log("applicantId",applicantId)
@@ -58,7 +58,7 @@ module.exports = ()=>{
 
 // for delete all registration drop table ->delete
 
-    router.delete('/registration', async (req, res, next)=>{
+    router.delete('/registration', async (req: any, res: any, next: any)=>{
         try {
             // const applicantId = req.params.applicantId;
             // console.log("applicantId",applicantId)

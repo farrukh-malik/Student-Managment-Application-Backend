@@ -1,9 +1,7 @@
 const REGISTRATION = 'registration';
 const AUTHENTICATION = 'authentication';
 
-const tables = {
+export {
     REGISTRATION,
     AUTHENTICATION
 };
-
-module.exports = tables;
