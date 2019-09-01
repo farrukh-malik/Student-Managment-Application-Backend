@@ -1,1 +1,1 @@
-{"version":3,"file":"table-names.js","sourceRoot":"","sources":["../../src/models/table-names.ts"],"names":[],"mappings":";;AAAA,MAAM,YAAY,GAAG,cAAc,CAAC;AAIhC,oCAAY;AAHhB,MAAM,cAAc,GAAG,gBAAgB,CAAC;AAIpC,wCAAc"}
+{"version":3,"file":"table-names.js","sourceRoot":"","sources":["../../src/models/table-names.ts"],"names":[],"mappings":";;AAAA,MAAM,YAAY,GAAG,cAAc,CAAC;AAKhC,oCAAY;AAJhB,MAAM,cAAc,GAAG,gBAAgB,CAAC;AAKpC,wCAAc;AAJlB,MAAM,YAAY,GAAG,cAAc,CAAC;AAKhC,oCAAY"}

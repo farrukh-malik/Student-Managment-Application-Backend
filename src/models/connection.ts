@@ -1,6 +1,8 @@
-const mysql = require('mysql');
-const databaseConnectionOption = require('./config');
+import * as mysql from 'mysql';
+import {databaseConnectionOption} from './config';
 
-export const connection = mysql.createConnection(
-    databaseConnectionOption
-);
+export class DatabaseCreationConnection{
+    static connection = mysql.createConnection(
+        databaseConnectionOption
+    );
+}

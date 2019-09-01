@@ -1,85 +1,99 @@
 import * as express from 'express';
 import { IUser } from '../shared/interfaces/user';
-const router = express.Router();
+import {UserService} from '../services/authentication';
 
+export class User {
+    router: express.Router;
+    userService: any;
+    constructor(connection: any) {
+        this.router = express.Router();
+        this.userService = new UserService(connection);
+        this.createUser();
+        this.approveUser();
+        this.getAllUser();
+        this.deleteUser();
+    }
 
-module.exports = ()=>{
-    const authenticationService = require('../services/authentication');
-    
- // for insert authentication ->Write
- router.post('/user', async (req: express.Request, res: express.Response, next: express.NextFunction)=>{
-    try {
-        console.log('authenticationObject:', req.body)
-        const authenticationObject: IUser = req.body;
+    createUser() {
+        this.router.post('/user', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+            try {
+                console.log('authenticationObject:', req.body)
+                const authenticationObject: IUser = req.body;
 
-        const responseOfAuthentication = await authenticationService.createUser(authenticationObject);
-        res.status(201).json({
-            message: 'ok',
-            responseOfAuthentication
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            err: error
+                const responseOfAuthentication = await this.userService.createUser(authenticationObject);
+                res.status(201).json({
+                    message: 'ok',
+                    responseOfAuthentication
+                });
+            } catch (error) {
+                next({
+                    status: 500,
+                    err: JSON.stringify(error)
+                });
+            }
         });
     }
-});
 
-// for insert approve authentication by adding true to position field ->Write
-router.post('/user/:userId', async (req, res, next)=>{
-    try {
-        console.log('userObject:', req.body)
-        const approvedAuthenticationObject = req.body.authentication;
+    approveUser() {
+       this.router.post('/user/:userId', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+            try {
+                console.log('userObject:', req.body)
+                const approvedAuthenticationObject = req.body.authentication;
 
-        const responseOfApprovedAuthentication = await authenticationService.approveUser(approvedAuthenticationObject);
-        res.status(201).json({
-            message: 'ok',
-            responseOfApprovedAuthentication
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            err: error
-        });
-    }
-});
-
-
-
- // for get all authentication ->Read
- router.get('/user', async(req, res)=>{
-    try{
-        // const authObj = req.body.auth;
-       let result = await authenticationService.getAllUser();
-         res.status(200).json({
-             res: "success",
-             result
-         })
-     }catch(error){
-         res.status(401).json({
-             err: error
-         });
-     }
- });
-
-// for delete single authentication ->delete
-router.delete('/user/:userId', async (req, res, next)=>{
-    try {
-        const userId = req.params.userId;
-        console.log("applicantId",userId)
-        await authenticationService.deleteUser(userId);
-        res.status(201).json({
-            message: 'ok'
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            err: error
+                const responseOfApprovedAuthentication = await this.userService.approveUser(approvedAuthenticationObject);
+                res.status(201).json({
+                    message: 'ok',
+                    responseOfApprovedAuthentication
+                });
+            } catch (error) {
+                next({
+                    status: 500,
+                    err: JSON.stringify(error)
+                });
+            }
         });
     }
-}); 
+
+    getAllUser() {
+        this.router.get('/user', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+            try {
+                // const authObj = req.body.auth;
+                let result = await this.userService.getAllUser();
+                res.status(200).json({
+                    res: "success",
+                    result
+                })
+            } catch (error) {
+                next({
+                    status: 500,
+                    err: JSON.stringify(error)
+                });
+            }
+        });
 
 
+    }
 
-return router;
+    deleteUser() {
+        this.router.delete('/user/:userId', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+            try {
+                const userId = req.params.userId;
+                console.log("applicantId", userId)
+                await this.userService.deleteUser(userId);
+                res.status(201).json({
+                    message: 'ok'
+                });
+            } catch (error) {
+                next({
+                    status: 500,
+                    err: JSON.stringify(error)
+                });
+            }
+        });
+
+    }
+
+    getRoute(){
+        return this.router;
+    }
 }

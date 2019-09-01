@@ -21,10 +21,17 @@ const CREATE_AUTHENTICATION_TABLE = `CREATE TABLE IF NOT EXISTS ${TABLES.AUTHENT
                                 position ENUM ('admin','teacher','student'),
                                 PRIMARY KEY (id)
                            )`;
+const ERROR_LOG_STRUCTURE = `CREATE TABLE IF NOT EXISTS ${TABLES.ERROR_LOGING}
+                           (
+                                id MEDIUMINT NOT NULL AUTO_INCREMENT,
+                                error TEXT NULL,
+                                time TIMESTAMP,
+                                PRIMARY KEY (id)
+                           )`;
+                         //   YYYY-MM-DD hh:mm:ss
 
-const schemas = {
+export const schema = {
     CREATE_REGISTRATION_TABLE,
-    CREATE_AUTHENTICATION_TABLE
+    CREATE_AUTHENTICATION_TABLE,
+    ERROR_LOG_STRUCTURE
 };
-
-module.exports = schemas;
